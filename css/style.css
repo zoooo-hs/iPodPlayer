@@ -1,0 +1,58 @@
+* {
+	font-family: Lucida Sans, Arial, Helvetica, sans-serif;
+	box-sizing: border-box;
+}
+
+body, html {
+	height: 100%;
+	margin: 0; background-color : #ffffff;
+	text-align: center;
+	background-color: #ffffff;
+}
+
+#bg-image {
+	/* Full height */
+	-webkit-filter: blur(12px);
+	height: 80vh;
+	width: 80vh;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 1;
+	opacity: 0.5;
+}
+
+#container {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 2;
+	width: min-content;
+	height: min-content;
+	border-radius: 10px;
+	margin: 0 auto;
+}
+
+#content {
+	height: 250px;
+	overflow: scroll;
+}
+
+#thumbnail {
+	padding: 15px;
+}
+
+.music {
+	font-size: 20px;
+	display: block;
+}
+
+.music.playNow {
+	font-size: 25px;
+	font-weight: bold;
+}
