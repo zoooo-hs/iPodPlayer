@@ -1,7 +1,7 @@
 import {IMusicLoadHandler} from ".";
 import Music from "../../model/music";
 
-const sampleMusic:Music = { title: "전설", artist: "JANNABI", uri: "http://localhost:8000/test.mp3", thumbnail: "http://localhost:8000/thumbnail.png" };
+const sampleMusic:Music = { title: "전설", artist: "JANNABI", uri: "http://localhost:8000/test.mp3", thumbnail: undefined };
 
 const sampleMusic2:Music = { title: "citi eyes", artist: "JANNABI", uri: "http://localhost:8000/test2.mp3", thumbnail: "http://localhost:8000/thumbnail2.jpeg" };
 const sampleMusicList: Music[] = [sampleMusic, sampleMusic2];

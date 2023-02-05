@@ -1,0 +1,23 @@
+#media-controller {
+    width: min-content;
+    margin: 0 auto
+}
+#media-controller > *{
+    display: block;
+}
+.thumbnail {
+    width: 200px;
+    height: 200px;
+    padding: 15px;
+    margin: 15px auto;
+}
+
+.thumbnail.loading {
+    line-height: 200px;  
+    text-align: center;
+    padding: 0;
+    margin: 30px auto;
+
+    font-size: 30px;
+    border : 1px solid black;
+}
