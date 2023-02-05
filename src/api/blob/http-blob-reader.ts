@@ -1,4 +1,4 @@
-import IBlobReader from ".";
+import { IBlobReader } from ".";
 
 export default class HTTPBlobReader implements IBlobReader {
     read = (uri: string): Promise<Blob> => {

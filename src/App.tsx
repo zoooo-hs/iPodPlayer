@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import {IMusicLoadHandler, IMusicParser} from './api/music';
+import {IMusicLoadHandler, IMusicParser, musicLoadHandlerName, musicParserName} from './api/music';
 import './App.css';
 import contextManager from './bean-factory/context-manager';
 import { LoadingType } from './common/loading-type';
@@ -12,8 +12,8 @@ import { changeMusic, fetch } from './store/music/music-store';
 function App() {
   const dispatch = useDispatch();
   const musicStore = useSelector((state: RootState) => state.musicStore)
-  const musicHandler: IMusicLoadHandler = contextManager.get("musicHandler");
-  const musicParser: IMusicParser = contextManager.get("musicParser");
+  const musicHandler: IMusicLoadHandler = contextManager.get(musicLoadHandlerName);
+  const musicParser: IMusicParser = contextManager.get(musicParserName);
 
   const musicList = musicStore.musicList;
   const currentMusicTrackNumber = musicStore.currentMusicTrackNumber;

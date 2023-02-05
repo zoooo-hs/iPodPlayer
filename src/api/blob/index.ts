@@ -1,3 +1,4 @@
-export default interface IBlobReader {
+export const blobReaderName = "blobReader";
+export interface IBlobReader {
     read: (uri: string) => Promise<Blob>
 }

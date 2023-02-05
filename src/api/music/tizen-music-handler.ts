@@ -14,6 +14,7 @@ export default class TizenMusicHandler implements IMusicLoadHandler {
             let filter = new CompositeFilter("INTERSECTION", [ipodMusicFilter]);
 
             content.find(
+                // eslint-disable-next-line array-callback-return
                 (contents: Content[]) => {
                     let musicList = contents.map((content): Music => {
                         let audioContent = content as AudioContent;

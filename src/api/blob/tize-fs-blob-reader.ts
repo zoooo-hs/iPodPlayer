@@ -1,5 +1,5 @@
 import { filesystem } from "tizen-common-web";
-import IBlobReader from ".";
+import { IBlobReader } from ".";
 
 export default class TizenFileSystemBlobReader implements IBlobReader {
     read = (uri: string): Promise<Blob> => {

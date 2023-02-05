@@ -35,6 +35,7 @@ const MediaController = function() {
             if (isPlaying)
                 audioRef.current.play();
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [currentMusic.uri])
 
     function onEnded() {

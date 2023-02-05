@@ -1,6 +1,6 @@
 import { IMusicParser } from ".";
 import Music from "../../model/music";
-import IBlobReader from "../blob";
+import { IBlobReader } from "../blob";
 // import * as mm from 'music-metadata-browser';
 const jsmediatags = require("jsmediatags");
 
