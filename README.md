@@ -1,46 +1,48 @@
-# Getting Started with Create React App
+# iPodPlayer for Samsung Smart TV(monitor)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+삼성 스마트 티비(모니터)에 아이팟 클래식을 연결해 노래를 듣고 싶다.
 
-## Available Scripts
+## 개요
+삼성 스마트 티비는 아이팟 클래식을 연결하면 외장 저장장치로 인식하고, 파일 탐색기를 제공한다. 탐색기는 기본적으로 노래를 재생할 수 있는 기능을 제공하지만, 아이팟 클래식과의 궁합은 좋지 못하다.
 
-In the project directory, you can run:
+### 아이팟 클래식의 음악 저장
 
-### `npm start`
+아이팟 클래식을 파일 탐색기로 열어보면 다음과 같은 구조를 갖는다.
+```bash
+iPod/
+    iPod_Control/
+        Music/
+            F00/
+                FXBX.mp3
+                ....mp3
+            F01/
+                XCFE.mp3
+            ...
+```
+iPod/Music/Fxx/xxxx.mp3 형태로 mp3 파일이 저장되는데, 아이튠즈에서 각 mp3 파일을 식별하는 해쉬를 구성하고 해쉬의 공통부분에 맞춰 디렉토리를 구성한 것 같다. 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### 이런 상황에서 음악 재생이란
+![iPod_Music_Directory](./docs/ipod_music_dir_arch.jpg)
+파일 탐색기에서 모든 음악을 한번에 보여주는 기능이 없어 특정 Fxx 디렉토리에 들어가, 해당 디렉토리에 있는 음악만 들을 수 있다. 음악을 듣기 위해서 매번 디렉토리를 왔다갔다 하는 번거로움이 있어, 사실상 듣기 어려운 환경이다.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## 목표
+노래만  잘  나오면  된다.
 
-### `npm test`
+### 본질적인 기능
+* iPod 내의 전체 음악을 한번에 볼 수 있고, 선택을 통해 재생이 가능하다.
+* 전체 음악에 대한 전체 반복, 랜덤 재생을 제공한다.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 추가 편의 기능
+* 전체 음악 리스트에 대한 테이블 제공 (페이징 적용)
+* TV 앱에 맞는 UX 편의성 제공
+* 단순 음원 제목이 아닌, 다른 메타데이터도 재생 화면에 보여주기
+* 가사 화면 제공
+* iPod classic 같은 드자인?..
+* TBD
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 진척도
+### 20230206
+* React + Typescript + Redux 적용
+* thumbnail loading component 추가
+### 20230203
+![V20230203](./docs/20230203.jpg)
