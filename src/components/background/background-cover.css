@@ -1,0 +1,30 @@
+
+#background-cover {
+    filter: blur(12px);
+	opacity: 0.5;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 1;
+
+}
+
+@media screen and (orientation:portrait) {
+    /* Portrait styles */
+    #background-cover {
+        height: 80vw;
+        width: 80vw;
+    }
+}
+/* Landscape */
+@media screen and (orientation:landscape) {
+    /* Landscape styles */
+    #background-cover {
+        height: 80vh;
+        width: 80vh;
+    }
+}

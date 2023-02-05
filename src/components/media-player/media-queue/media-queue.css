@@ -1,0 +1,14 @@
+#media-queue {
+    margin: 15px;
+    height: 220px;
+	overflow: scroll;
+}
+.music {
+	font-size: 20px;
+	display: block;
+}
+
+.music.playNow {
+	font-size: 25px;
+	font-weight: bold;
+}
