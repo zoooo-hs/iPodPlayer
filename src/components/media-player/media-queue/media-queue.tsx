@@ -14,20 +14,21 @@ interface OrderedMusic {
 const MediaQueue = function() {
     const dispatch = useDispatch();
     const musicStore = useSelector((state: RootState) => state.musicStore)
-    const orderedMusicList = musicStore.musicList.map((music, index) => { return {music, index}});
+    const musicList = musicStore.musicList;
     const currentMusicTrackNumber: number = musicStore.currentMusicTrackNumber;
 
-    const [filteredMusicList, setFilteredMusicList] = useState(orderedMusicList);
+    const [filteredMusicList, setFilteredMusicList] = useState<OrderedMusic[]>([]);
     const [filterInput, setFilterInput] = useState("");
 
     function filter(e: ChangeEvent<HTMLInputElement>) {
-        setFilterInput(e.target.value);
+        setFilterInput(e.target.value||"");
     }
 
     useEffect(() => {
-        const filterd = orderedMusicList.filter(orderedMusic => orderedMusic.music.title.toLowerCase().includes(filterInput.toLowerCase()));
+        // TODO: 트랙 넘버를 매번 넣지 않고 노래를 식별하고, 다음 노래를 식별할 수 있는 방법 찾기
+        const filterd = musicList.map((music, index) => { return {music, index}}).filter(orderedMusic => orderedMusic.music.title.toLowerCase().includes(filterInput.toLowerCase()));
         setFilteredMusicList(filterd);
-    }, [filterInput, orderedMusicList]);
+    }, [filterInput, musicList]);
 
     function playThis(index: number) {
         dispatch(setCurrent(index));
