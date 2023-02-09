@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import HTTPBlobReader from "../api/blob/http-blob-reader";
 import TizenFileSystemBlobReader from "../api/blob/tize-fs-blob-reader";
 import MusicParserImpl from "../api/music/music-parser-impl";
@@ -10,15 +11,15 @@ import { blobReaderName } from "../api/blob";
 
 export default function init() {
     initTizen();
-    // initLocalReact();
+    initLocalReact();
 }
 
 function initTizen() {
-    contextManager.set(musicLoadHandlerName, new TizenMusicHandler());
-    contextManager.set(blobReaderName, new TizenFileSystemBlobReader());
-    contextManager.set(musicParserName, new MusicParserImpl(
-        contextManager.get(blobReaderName)
-    ));
+    // contextManager.set(musicLoadHandlerName, new TizenMusicHandler());
+    // contextManager.set(blobReaderName, new TizenFileSystemBlobReader());
+    // contextManager.set(musicParserName, new MusicParserImpl(
+    //     contextManager.get(blobReaderName)
+    // ));
 }
 
 function initLocalReact() {
