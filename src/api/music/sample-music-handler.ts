@@ -13,6 +13,10 @@ for (let index = 1; index < 60; index++) {
 }
 export default class SampleMusicHandler implements IMusicLoadHandler {
     loadMusics = ():Promise<Music[]> => {
-        return Promise.resolve(sampleMusicList);
+        return new Promise((resolve ,reject) => {
+            setTimeout(() => {
+                resolve(sampleMusicList);
+            }, 2000);
+        });
     };
 }

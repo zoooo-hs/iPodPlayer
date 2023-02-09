@@ -13,7 +13,8 @@ class ContextManager {
         return value;
     }
 
-    set (key: string, value: Object, changBean: boolean = false) {
+    set<T> (key: string, value: T, changBean: boolean = false) {
+        console.log(typeof value);
         if (!changBean && this.store.has(key)) {
             // 값이 있을 경우 changeBean이 true여야 가능하다.
             console.warn("context manager에 값이 이미 있는 경우, changeBean = true 파라미터가 필요합니다.");

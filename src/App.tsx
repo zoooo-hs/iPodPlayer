@@ -9,6 +9,8 @@ import BackgroundCover from './components/background/background-cover';
 import MediaPlayer from './components/media-player/media-player';
 import { RootState } from './store';
 import { changeMusic, fetch } from './store/music/music-store';
+
+
 function App() {
   const dispatch = useDispatch();
   const musicStore = useSelector((state: RootState) => state.musicStore)
@@ -23,12 +25,7 @@ function App() {
 
   useEffect(() => {
     if (loadState === "INITIALIZED") {
-      musicHandler.loadMusics()
-        .then(musicList => {
-          dispatch(fetch(musicList));
-          setLoadState("LOADED");
-        });
-      setLoadState("LOADING");
+      reload();
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loadState]);
@@ -43,16 +40,34 @@ function App() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentMusic, currentMusicTrackNumber])
 
+
+  function reload() {
+    musicHandler.loadMusics()
+      .then(musicList => {
+        dispatch(fetch(musicList));
+        setLoadState("LOADED");
+      });
+    setLoadState("LOADING");
+  }
+
+
   if (loadState !== "LOADED") {
     return <div>loading</div>
   }
 
   return (
-    <div className="App">
+    <div id="App">
+      <ReloadButton reload={reload}/>
       <BackgroundCover/>
       <MediaPlayer/>
     </div>
   );
+}
+
+function ReloadButton({reload}: {reload: ()=>void}) {
+  return (
+      <button id='reload-button' onClick={reload}>RELOAD</button>
+  )
 }
 
 export default App;

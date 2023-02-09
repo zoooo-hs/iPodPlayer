@@ -26,6 +26,7 @@ const MediaController = function() {
 
     // TOOD: html 기본 audio의 컨트롤러가 아닌, 자체 component로 재생, 정지, 반복 컨트롤 제공
     const [isPlaying, setPlaying] = useState(false);
+    const [isLoop, setLoop] = useState(false);
 
     const audioRef = useRef<HTMLAudioElement>(null);
 
@@ -36,7 +37,7 @@ const MediaController = function() {
                 audioRef.current.play();
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [currentMusic.uri])
+    }, [currentMusic])
 
     function onEnded() {
         dispatch(setCurrent((currentMusicTrackNumber + 1) % musicListLength));
@@ -44,6 +45,15 @@ const MediaController = function() {
 
     function onClickPlay() {
         setPlaying(true);
+    }
+
+    function LoopButton() {
+        // TODO: MUI 적용하기
+        return (
+            <label>LOOP
+                <input type="checkbox" name="chk_info" value="checked" onChange={(e: React.ChangeEvent<HTMLInputElement>) => setLoop(e.target.checked)} />
+            </label>
+        )
     }
 
 
@@ -55,10 +65,12 @@ const MediaController = function() {
             <h1>{currentMusic.title}</h1>
             <h2>{currentMusic.artist}</h2>
             <Thumbnail dataUrl={currentMusic.thumbnail}/>
+            <LoopButton />
             <audio
                 ref={audioRef}
                 onEnded={onEnded}
                 onPlayCapture={onClickPlay}
+                loop={isLoop}
                 controls={true}>
                 <source src={currentMusic.uri}></source>
             </audio>

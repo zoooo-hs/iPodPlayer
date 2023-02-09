@@ -1,3 +1,14 @@
 #App {
     height: 100%;
 }
+
+#reload-button {
+    height: 100vh;
+    position: absolute;
+    left: 0;
+    opacity: 0;
+}
+
+#reload-button:hover {
+    opacity: 1;
+}

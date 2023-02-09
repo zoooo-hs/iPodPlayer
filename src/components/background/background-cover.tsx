@@ -4,7 +4,7 @@ import { RootState } from "../../store";
 import "./background-cover.css";
 const BackgroundCover = function() {
     const musicStore = useSelector((state: RootState) => state.musicStore)
-    const thumbnail = musicStore.musicList[musicStore.currentMusicTrackNumber].thumbnail || "";
+    const thumbnail = musicStore.musicList[musicStore.currentMusicTrackNumber]?.thumbnail || "";
 
     const [backgroundImage, setBackgroundImage] = useState(thumbnail);
 
