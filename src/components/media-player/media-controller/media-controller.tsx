@@ -6,14 +6,37 @@ import { RootState } from "../../../store";
 import { setCurrent } from "../../../store/music/music-store";
 import "./media-controller.css";
 
-function Thumbnail({dataUrl}: {dataUrl?: string}) {
-    if (!!!dataUrl) { 
-        return <div className="thumbnail loading">LOADING</div>
-    }
-    return <img className="thumbnail" src={dataUrl} 
-    // width="200px" height="200px" 
-    alt="album-cover"/>
+function LyricsBox({lyrics}: {lyrics?: string}) {
+    return (
+            <>
+                <div className="thumbnail-lyric-black"></div>
+                <pre className="thumbnail-lyric">
+                {lyrics}
+                </pre>
+            </>
+           )
+}
 
+function ThumbnailWithLyrics({dataUrl, lyrics, showLyrics}: {dataUrl?: string, lyrics?: string, showLyrics: boolean}) {
+    function className() {
+        if (showLyrics) {
+            return "thumbnail blured";
+        }
+
+        return "thumbnail";
+
+    }
+
+    return (
+            <div className="thumbnail-container">
+                <img className={className()} src={dataUrl} alt="album-cover"/>
+                {showLyrics?
+                <LyricsBox lyrics={lyrics}/>
+                :
+                null
+                }
+            </div>
+           );
 }
 
 const MediaController = function() {
@@ -27,6 +50,7 @@ const MediaController = function() {
     // TOOD: html 기본 audio의 컨트롤러가 아닌, 자체 component로 재생, 정지, 반복 컨트롤 제공
     const [isPlaying, setPlaying] = useState(false);
     const [isLoop, setLoop] = useState(false);
+    const [showLyrics, setShowLyrics] = useState(false);
 
     const audioRef = useRef<HTMLAudioElement>(null);
 
@@ -51,7 +75,16 @@ const MediaController = function() {
         // TODO: MUI 적용하기
         return (
             <label>LOOP
-                <input type="checkbox" name="chk_info" value="checked" onChange={(e: React.ChangeEvent<HTMLInputElement>) => setLoop(e.target.checked)} />
+                <input type="checkbox" name="chk_info" value="checked" checked={isLoop} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setLoop(e.target.checked)} />
+            </label>
+        )
+    }
+
+    function LyricsButton() {
+        // TODO: MUI 적용하기
+        return (
+            <label>Lyrics
+                <input type="checkbox" name="chk_info" value="checked" checked={showLyrics} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setShowLyrics(e.target.checked)} />
             </label>
         )
     }
@@ -64,8 +97,9 @@ const MediaController = function() {
         <div id="media-controller">
             <h1>{currentMusic.title}</h1>
             <h2>{currentMusic.artist}</h2>
-            <Thumbnail dataUrl={currentMusic.thumbnail}/>
+            <ThumbnailWithLyrics dataUrl={currentMusic.thumbnail} lyrics={currentMusic.lyrics} showLyrics={showLyrics}/>
             <LoopButton />
+            <LyricsButton />
             <audio
                 ref={audioRef}
                 onEnded={onEnded}

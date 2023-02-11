@@ -5,12 +5,6 @@
 #media-controller > *{
     display: block;
 }
-.thumbnail {
-    width: 200px;
-    height: 200px;
-    padding: 15px;
-    margin: 15px auto;
-}
 
 .thumbnail.loading {
     line-height: 200px;  
@@ -20,4 +14,50 @@
 
     font-size: 30px;
     border : 1px solid black;
+}
+
+.thumbnail-container {
+    width: 200px;
+    height: 200px;
+    padding: 15px;
+    margin: 15px auto;
+    position: relative;
+    text-align: center;
+}
+
+
+.thumbnail {
+    width: inherit;
+    height: inherit;
+}
+
+.thumbnail-lyric {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 75%;
+    height: 75%;
+    overflow: scroll;
+    margin: 0;
+
+    white-space: pre-wrap;
+    color: white;
+}
+
+.thumbnail-lyric-black {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: inherit;
+    height: inherit;
+    margin: 0;
+
+    background-color: black;
+    filter: blur(80px);
+}
+
+.blured {
+    filter: blur(4px);
 }

@@ -8,4 +8,5 @@ export interface IMusicLoadHandler {
 export const musicParserName = "musicParser";
 export interface IMusicParser {
     thumbnailDataUrl: (music: Music) => Promise<string>
+    parse: (music: Music) => Promise<Music>
 }

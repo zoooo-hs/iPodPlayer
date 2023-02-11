@@ -19,6 +19,7 @@ export default class TizenMusicHandler implements IMusicLoadHandler {
                     let musicList = contents.map((content): Music => {
                         let audioContent = content as AudioContent;
                         return {
+                            parsed: false,
                             title: audioContent.title,
                             artist: audioContent.artists?.join(",") || "",
                             uri: audioContent.contentURI,

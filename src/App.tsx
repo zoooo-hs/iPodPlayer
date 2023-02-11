@@ -31,11 +31,11 @@ function App() {
   }, [loadState]);
 
   useEffect(() => {
-    if (!!!currentMusic) return;
-    musicParser.thumbnailDataUrl(currentMusic)
-      .then(thumbnailData => {
-        currentMusic.thumbnail = thumbnailData;
-        dispatch(changeMusic(currentMusicTrackNumber, currentMusic));
+    if (!!!currentMusic || currentMusic.parsed) return;
+    musicParser.parse(currentMusic)
+    .then(parsedMusic => {
+            console.log(parsedMusic);
+        dispatch(changeMusic(currentMusicTrackNumber, parsedMusic));
       });
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentMusic, currentMusicTrackNumber])
