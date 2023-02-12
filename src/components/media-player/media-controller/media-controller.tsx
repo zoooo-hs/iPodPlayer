@@ -61,7 +61,7 @@ const MediaController = function() {
                 audioRef.current.play();
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [currentMusic])
+    }, [currentMusic?.uri])
 
     function onEnded() {
         dispatch(setCurrent((currentMusicTrackNumber + 1) % musicListLength));
